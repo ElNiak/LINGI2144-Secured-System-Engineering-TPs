@@ -1,0 +1,205 @@
+user@kali:~/SecurityClass/StackStethoscope$ ./vuln &
+[1] 1333
+user@kali:~/SecurityClass/StackStethoscope$ cat /proc/1333/stat | cut -d ' ' -f 28
+3217460464
+user@kali:~/SecurityClass/StackStethoscope$ gdb
+GNU gdb (Debian 8.3.1-1) 8.3.1
+Copyright (C) 2019 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "i686-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+(gdb) attach 1333
+Attaching to process 1333
+Reading symbols from /home/user/SecurityClass/StackStethoscope/vuln...
+Reading symbols from /lib/i386-linux-gnu/libc.so.6...
+Reading symbols from /usr/lib/debug/.build-id/34/28727ebe1186a5bb31dfd31dd075089b46a016.debug...
+Reading symbols from /lib/ld-linux.so.2...
+Reading symbols from /usr/lib/debug/.build-id/e4/a96c6cb9e64fe15d6a3c20fcb7abea16c0b001.debug...                                                      
+0xb7f9ea9d in __kernel_vsyscall ()
+(gdb) disass main
+Dump of assembler code for function main:
+   0x00416229 <+0>:     lea    0x4(%esp),%ecx
+   0x0041622d <+4>:     and    $0xfffffff0,%esp
+   0x00416230 <+7>:     pushl  -0x4(%ecx)
+   0x00416233 <+10>:    push   %ebp
+   0x00416234 <+11>:    mov    %esp,%ebp
+   0x00416236 <+13>:    push   %ebx
+   0x00416237 <+14>:    push   %ecx
+   0x00416238 <+15>:    sub    $0x120,%esp
+   0x0041623e <+21>:    call   0x416130 <__x86.get_pc_thunk.bx>
+   0x00416243 <+26>:    add    $0x2dbd,%ebx
+   0x00416249 <+32>:    sub    $0x4,%esp
+   0x0041624c <+35>:    push   $0x0
+   0x0041624e <+37>:    push   $0x1
+   0x00416250 <+39>:    push   $0x2
+   0x00416252 <+41>:    call   0x4160c0 <socket@plt>
+   0x00416257 <+46>:    add    $0x10,%esp
+   0x0041625a <+49>:    mov    %eax,-0xc(%ebp)
+   0x0041625d <+52>:    cmpl   $0x0,-0xc(%ebp)
+   0x00416261 <+56>:    jns    0x41627f <main+86>
+   0x00416263 <+58>:    sub    $0xc,%esp
+   0x00416266 <+61>:    lea    -0x1ff8(%ebx),%eax
+   0x0041626c <+67>:    push   %eax
+   0x0041626d <+68>:    call   0x416060 <perror@plt>
+   0x00416272 <+73>:    add    $0x10,%esp
+   0x00416275 <+76>:    mov    $0xffffffff,%eax
+   0x0041627a <+81>:    jmp    0x4163b0 <main+391>
+   0x0041627f <+86>:    movw   $0x2,-0x24(%ebp)
+   0x00416285 <+92>:    sub    $0xc,%esp
+   0x00416288 <+95>:    push   $0x0
+--Type <RET> for more, q to quit, c to continue without paging--
+   0x0041628a <+97>:    call   0x4160a0 <htonl@plt>
+   0x0041628f <+102>:   add    $0x10,%esp
+   0x00416292 <+105>:   mov    %eax,-0x20(%ebp)
+   0x00416295 <+108>:   sub    $0xc,%esp
+   0x00416298 <+111>:   push   $0x7a6a
+   0x0041629d <+116>:   call   0x416050 <htons@plt>
+   0x004162a2 <+121>:   add    $0x10,%esp
+   0x004162a5 <+124>:   mov    %ax,-0x22(%ebp)
+   0x004162a9 <+128>:   movl   $0x10,-0x14(%ebp)
+   0x004162b0 <+135>:   mov    -0x14(%ebp),%eax
+   0x004162b3 <+138>:   sub    $0x4,%esp
+   0x004162b6 <+141>:   push   %eax
+   0x004162b7 <+142>:   lea    -0x24(%ebp),%eax
+   0x004162ba <+145>:   push   %eax
+   0x004162bb <+146>:   pushl  -0xc(%ebp)
+   0x004162be <+149>:   call   0x416090 <bind@plt>
+   0x004162c3 <+154>:   add    $0x10,%esp
+   0x004162c6 <+157>:   test   %eax,%eax
+   0x004162c8 <+159>:   jns    0x4162e6 <main+189>
+   0x004162ca <+161>:   sub    $0xc,%esp
+   0x004162cd <+164>:   lea    -0x1ff1(%ebx),%eax
+   0x004162d3 <+170>:   push   %eax
+   0x004162d4 <+171>:   call   0x416060 <perror@plt>
+   0x004162d9 <+176>:   add    $0x10,%esp
+   0x004162dc <+179>:   mov    $0xffffffff,%eax
+   0x004162e1 <+184>:   jmp    0x4163b0 <main+391>
+   0x004162e6 <+189>:   sub    $0x8,%esp
+   0x004162e9 <+192>:   push   $0x5
+   0x004162eb <+194>:   pushl  -0xc(%ebp)
+   0x004162ee <+197>:   call   0x4160b0 <listen@plt>
+--Type <RET> for more, q to quit, c to continue without paging--
+   0x004162f3 <+202>:   add    $0x10,%esp
+   0x004162f6 <+205>:   test   %eax,%eax
+   0x004162f8 <+207>:   jns    0x416316 <main+237>
+   0x004162fa <+209>:   sub    $0xc,%esp
+   0x004162fd <+212>:   lea    -0x1fec(%ebx),%eax
+   0x00416303 <+218>:   push   %eax
+   0x00416304 <+219>:   call   0x416060 <perror@plt>
+   0x00416309 <+224>:   add    $0x10,%esp
+   0x0041630c <+227>:   mov    $0xffffffff,%eax
+   0x00416311 <+232>:   jmp    0x4163b0 <main+391>
+   0x00416316 <+237>:   sub    $0x4,%esp
+   0x00416319 <+240>:   lea    -0x14(%ebp),%eax
+   0x0041631c <+243>:   push   %eax
+   0x0041631d <+244>:   lea    -0x24(%ebp),%eax
+   0x00416320 <+247>:   push   %eax
+   0x00416321 <+248>:   pushl  -0xc(%ebp)
+   0x00416324 <+251>:   call   0x416070 <accept@plt>
+   0x00416329 <+256>:   add    $0x10,%esp
+   0x0041632c <+259>:   mov    %eax,-0x10(%ebp)
+   0x0041632f <+262>:   cmpl   $0x0,-0x10(%ebp)
+   0x00416333 <+266>:   jns    0x41635c <main+307>
+   0x00416335 <+268>:   sub    $0xc,%esp
+   0x00416338 <+271>:   lea    -0x1fe5(%ebx),%eax
+   0x0041633e <+277>:   push   %eax
+   0x0041633f <+278>:   call   0x416060 <perror@plt>
+   0x00416344 <+283>:   add    $0x10,%esp
+   0x00416347 <+286>:   sub    $0xc,%esp
+   0x0041634a <+289>:   pushl  -0xc(%ebp)
+   0x0041634d <+292>:   call   0x4160d0 <close@plt>
+   0x00416352 <+297>:   add    $0x10,%esp
+--Type <RET> for more, q to quit, c to continue without paging--
+   0x00416355 <+300>:   mov    $0xffffffff,%eax
+   0x0041635a <+305>:   jmp    0x4163b0 <main+391>
+   0x0041635c <+307>:   sub    $0x4,%esp
+   0x0041635f <+310>:   push   $0x400
+   0x00416364 <+315>:   lea    -0x124(%ebp),%eax
+   0x0041636a <+321>:   push   %eax
+   0x0041636b <+322>:   pushl  -0x10(%ebp)
+   0x0041636e <+325>:   call   0x416030 <read@plt>
+   0x00416373 <+330>:   add    $0x10,%esp
+   0x00416376 <+333>:   sub    $0x8,%esp
+   0x00416379 <+336>:   lea    -0x124(%ebp),%eax
+   0x0041637f <+342>:   push   %eax
+   0x00416380 <+343>:   lea    -0x1fde(%ebx),%eax
+   0x00416386 <+349>:   push   %eax
+   0x00416387 <+350>:   call   0x416040 <printf@plt>
+   0x0041638c <+355>:   add    $0x10,%esp
+   0x0041638f <+358>:   sub    $0xc,%esp
+   0x00416392 <+361>:   pushl  -0x10(%ebp)
+   0x00416395 <+364>:   call   0x4160d0 <close@plt>
+   0x0041639a <+369>:   add    $0x10,%esp
+   0x0041639d <+372>:   sub    $0xc,%esp
+   0x004163a0 <+375>:   pushl  -0xc(%ebp)
+   0x004163a3 <+378>:   call   0x4160d0 <close@plt>
+   0x004163a8 <+383>:   add    $0x10,%esp
+   0x004163ab <+386>:   mov    $0x1,%eax
+   0x004163b0 <+391>:   lea    -0x8(%ebp),%esp
+   0x004163b3 <+394>:   pop    %ecx
+   0x004163b4 <+395>:   pop    %ebx
+   0x004163b5 <+396>:   pop    %ebp
+   0x004163b6 <+397>:   lea    -0x4(%ecx),%esp
+--Type <RET> for more, q to quit, c to continue without paging--
+   0x004163b9 <+400>:   ret    
+End of assembler dump.
+(gdb) x/li 0x0041636e
+   0x41636e <main+325>: call   0x416030 <read@plt>
+(gdb) b *main+325
+Breakpoint 1 at 0x41636e: file vuln2.c, line 41.
+(gdb) p &reply
+No symbol "reply" in current context.
+(gdb) p &b
+backtrace                     bitset_word_t
+backtrace_and_maps            blacklist_read
+backtrace_and_maps.constprop  blanks
+backtrace_helper              bool_t
+backtrace_symbols             bracket_elem_t
+backtrace_symbols_fd          bracket_elem_type
+bad_key_err                   brk
+banner                        bsd_signal
+base_from_cb_data             bsdcred
+base_from_cb_data.cold        bsearch
+base_from_object              btowc
+base_from_object.cold         buf
+base_of_encoded_value         buffer
+base_of_encoded_value.cold    buffer_free
+base_table_t                  buffer_size
+basename                      buffered_vfprintf
+bases                         buflen
+bcmp                          bufsize
+bcopy                         build_charclass
+bcopy_ifunc                   build_charclass.isra
+bdflush                       build_charclass_op
+bdflush@GLIBC_2.0             build_trtable
+bin_tree_storage_t            build_upper_buffer
+bin_tree_t                    build_wcs_buffer
+bind                          build_wcs_upper_buffer
+bind@got.plt                  builtin_aliases
+bind@plt                      builtin_map
+bind_textdomain_codeset       builtin_modules
+binding                       byte
+bindresvport                  bytearray
+bindtextdomain                bzero
+bitset_t                      
+(gdb) p &bQuit
+(gdb) 
+No symbol "reply" in current context.
+(gdb) p &bu
+No symbol "bu" in current context.
+(gdb) p &buf
+$1 = (char **) 0xb7f84f10 <buf>
+(gdb) c
+
+
+=> offset = BFC68CF0 - 0xb7f84f10 = 

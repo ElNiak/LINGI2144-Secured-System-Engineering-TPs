@@ -1,0 +1,421 @@
+\documentclass{article}
+\usepackage[top=3.1cm, bottom=3.1cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix} 
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normal]{caption}
+\usepackage{mathtools, bm}
+\usepackage{amssymb, bm}
+%\usepackage{wrapfig}
+\usepackage{floatflt}
+\usepackage{enumitem}
+\usepackage{MnSymbol,wasysym}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{hyperref}
+\usepackage{qtree}
+%\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{pgffor}
+\usepackage{qtree}
+%\usepackage{mhchem}
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage{inconsolata}
+\usepackage{minted}
+%\usepackage{syntax} %Fait planter latex pour une raison quelconque
+
+\usepackage{color}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{mediumslateblue}{rgb}{0.48, 0.41, 0.93}
+\definecolor{electricviolet}{rgb}{0.56, 0.0, 1.0}
+
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\bmatn}[9]{\begin{bmatrix} #1 & #2 & #3\\ #4 & #5 & #6 \\ #7 & #8 & #9\end{bmatrix}}
+
+\renewcommand{\labelitemii}{$\bullet$}
+\renewcommand{\labelitemiii}{$\circ$}
+%\renewcommand{\labelitemiv}{$\bullet$}
+
+
+\newcommand{\codecourse}{LINGI2144}
+\newcommand{\titlecourse}{Secured System Engineering}
+\newcommand{\othor}{\\
+\textsc{Crochet} Christophe\\
+\textsc{Duchene} Fabien\\
+\textsc{Given-Wilson} Thomas\\
+\textsc{Strebelle} Sebastien}
+\newcommand{\professor}{\textsc{Legay} Axel}
+\newcommand{\ayear}{2020 - 2021}
+\newcommand{\year}{2020}
+
+\newenvironment{Figure} %for multicols
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{pblue},
+  keywordstyle=[2]{\color{mediumslateblue}},
+  keywordstyle=[3]{\color{electricviolet}},
+  identifierstyle=\color{black},
+  commentstyle=\itshape\color{pgreen},
+  stringstyle=\color{pred},
+  language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  aboveskip=0.3cm,belowskip=0.3cm,
+  mathescape=true,
+  moredelim=[il][\textcolor{pgrey}]{\$\$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+  morekeywords={then,end,type,String},
+  morekeywords=[2]{invariant,variant,var},
+  extendedchars=true,
+  literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+\pagenumbering{roman}
+\title{\codecourse : \titlecourse}
+\author{\othor}
+\date{September \year}
+\fancyhead[R]{\codecourse}
+
+\renewcommand{\footrulewidth}{pt}
+\fancyfoot[L]{\codecourse}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{\year}
+
+\newcommand{\colR}[1]{\color{red}{#1}}
+\newcommand{\colRB}[1]{\color{red}{[#1]}}
+\newcommand{\sep}{\ \wedge\ }
+
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\ok}{ok}
+\DeclareMathOperator{\abs}{abs}
+
+\pgfplotsset{compat=1.14}
+
+\begin{document}
+        \hfill\includegraphics[scale=0.5]{image/logoepl.png}
+        
+        \vspace*{\fill}
+            
+        \begin{center}
+        
+            \rule{1\textwidth}{1pt}\\
+	            \vspace{0.5\baselineskip}
+		            \begin{LARGE}
+	                	\textbf{\codecourse : \titlecourse}\\
+	                	Tutorial 9: Dynamic Analysis
+		            \end{LARGE}
+		        \vspace{0.5\baselineskip}       
+	        \rule{1\textwidth}{1pt}\\
+	        
+	        \vspace{0.5\baselineskip}
+	        
+	        \includegraphics[scale=1.5]{image/MCP.jpg}\\
+
+	        \vspace{0.5\baselineskip}
+	            Academic year : \ayear\\
+                
+		\end{center}
+		
+            \vspace*{\fill}
+            
+        \begin{tabular}{l@{\hspace{0.0cm}}r}
+        
+                \begin{minipage}{7cm}\noindent\textbf{Teacher :} \professor\\
+                \noindent\textbf{Course :} \codecourse\\
+                \noindent\textbf{Collaborators :} \othor 
+                \end{minipage}
+                &
+                
+        \end{tabular} 
+
+\newpage
+
+%\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+%\begin{itemize} //Bullet points
+%    \item [$\bullet$]
+%    \item [$\bullet$]
+%\end{itemize}
+
+%\begin{multicols}{2} //Multicolonne
+%
+%\vfill\null
+%\columnbreak
+%
+%\end{multicols}
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale = 0.7]{image/10.PNG}
+%    \caption{Titre}
+%    \label{fig:titre}
+%\end{figure}
+
+
+\section{Prerequisite}
+\noindent Working directory: \lstinline{~/SecurityClass/Tutorial-09}\\
+
+
+\noindent There is a new image for this tutorial, it is highly recommended you
+download this new image to save a lot of effort!
+Also note that due to lots of files and sharing between parts of the tutorial,
+the tutorial files have not been split up according to section.\\
+
+\noindent If you downloaded the new image and made on changes to your VM configuration then you can skip this section.
+If you made changes to your VM configuration it is HIGHLY recommended you keep the memory size small (or change it back to a small
+amount).\\
+
+\noindent To run the tutorial today you will need to download some files
+these are:
+\begin{enumerate}
+    \item \lstinline{LiMe} 
+    \begin{center}
+    \lstinline{git clone https://github.com/504ensicsLabs/LiME.git}
+\end{center}
+    \item \lstinline{volatility}
+    \begin{center}
+    \lstinline{git clone https://github.com/volatilityfoundation/volatility.git}
+\end{center}
+    \item A wannacry memory dump (available from):
+    \begin{center}
+    \url{https://mega.nz/#!Au5xlCAS!KX5ZJKYzQgDHSa72lPFwqKL6CsZS7oQGbyyQrMTH9XY}
+\end{center}
+the password to extract this is in the Tutorial files in password.txt.
+    \item You will also need some libraries to make things work, you should run:
+    \begin{lstlisting}
+apt-get install memdump dwarfdump libdistorm3-3 libjansson4 libyara3
+    python-distorm3 python-jdcal python-openpyxl python-py python-pytest
+    python-yara volatility volatility-tools
+    \end{lstlisting}
+\end{enumerate}
+\noindent After downloaded and installing the above, you should reboot the VM.
+
+\section{Exercise}
+\subsection{Memory Dumping with  \lstinline{LiMe}}
+Let's build a \lstinline{LiMe} memory profile:
+\begin{center}
+    \lstinline{cd LiME/src}\\
+    \lstinline{make}
+\end{center}
+\noindent this should build your kernel module, e.g. \lstinline{lime-5.3.0-kali2-686-pae.ko} You can dump the system memory using the \lstinline{LiMe} module you built with (\textbf{take long time}):
+\begin{lstlisting}
+sudo insmod lime-5.3.0-kali2-686-pae.ko
+    "path=/home/admin/SecurityClass/Tutorial-09/memory.dump format=lime"
+    \end{lstlisting}
+\noindent After the dump has completed you will need to remove the \lstinline{LiMe} module
+with
+\begin{center}
+    \lstinline{sudo rmmod lime}
+\end{center}
+\noindent The above command (or variations) will be assumed to be used for dumping memory for the rest of this tutorial (but not repeated).
+\subsection{Configuring volatility}
+NOTE: Details from:
+\begin{center}
+    \url{https://github.com/volatilityfoundation/volatility/wiki/Installation#getting-volatility}
+\end{center}
+\noindent but the main steps for Kali Linux 32-bit are described below, you should not
+need the above link unless your system is different or something goes wrong.\\
+
+\noindent The parts below are for your own information and configuration, you
+should not need to do these on the downloaded image. If the last line of this
+section works for you, then skip the configuration here.
+The you will need to build a profile. Details are here
+\begin{center}
+    \url{https://github.com/volatilityfoundation/volatility/wiki/Linux}
+\end{center}
+\noindent but the quick version that worked for me was and should work on your image is:
+\begin{lstlisting}
+cd volatility/tools/linux
+make
+cd ../..
+sudo zip ./volatility/plugins/overlays/linux/Kali-5.3.0-686.zip
+    ./tools/linux/module.dwarf /boot/System.map-5.3.0-kali2-686-pae
+\end{lstlisting}
+\noindent you can now find the name of the profile you created with
+\begin{center}
+    \lstinline{python vol.py --info | grep -i kal}
+\end{center}
+\noindent Now we can use this \lstinline{LiMe} memory dump and volatility to see which
+processes were running when we took the memory dump:
+\begin{center}
+    \begin{lstlisting}
+python vol.py -f /home/admin/SecurityClass/Tutorial-09/memory.dump
+    --profile=LinuxKali-5_3_0-686x86 linux_pslist
+\end{lstlisting}
+\end{center}
+\subsection{Memory Dumping Basics}
+NOTE: The "\lstinline{build.sh}" script will rebuild the "malware" for this tutorial,
+you should not need to do this unless you made major changes to your VM
+environment.\\
+
+\noindent In the \lstinline{Tutorial-09/bin} directory you will fond various programs. Run the
+program \lstinline{malware_1} with
+\begin{center}
+    \lstinline{./bin/malware_1}
+\end{center}
+\noindent which will print \lstinline{"I am evil!!!"} and then pause. During this pause dump the
+memory of the system using \lstinline{LiMe}.\\
+
+\noindent Once you have done the memory dump you can kill \lstinline{malware_1} (it is set
+to sleep for a long time so you have time to do the dump).\\
+
+\noindent Now we can see which processes were running when we dumped the memory with
+\begin{lstlisting}
+python vol.py -f /home/admin/SecurityClass/Tutorial-09/memory.dump
+    --profile=LinuxKali-5_3_0-686x86 linux_pslist
+\end{lstlisting}
+\noindent and we should see that malware 1 was running and what process ID it had.\\
+
+\noindent Now we can look inside this process to see that the string "I am evil" is present with
+\begin{lstlisting}
+python vol.py -f /home/admin/SecurityClass/Tutorial-09/memory.dump
+    --profile=LinuxKali-5_3_0-686x86 -p 2452 linux_yarascan -Y "I am evil"
+\end{lstlisting}
+\noindent where 2452 is the process ID of \lstinline{malware_1} in the memory dump.
+\subsection{Memory Dumping Again}
+There are four more malware programs in the bin directory. Observe that
+only malware 1 is detected as malware by a simple YARA rule:
+\begin{center}
+    \lstinline{yara evil.yar bin}
+\end{center}
+\noindent However, the others also print \lstinline{"I am evil!!!"}.\\
+
+\noindent NOTE: You can test your YARA rules from last week on these malware
+if you want, some may be detected (or detectable) with YARA.\\
+
+\noindent Run the other programs and perform memory dumps to confirm that you
+can observe the malicious behaviour string in the memory.
+\subsection{WannaCry}
+WARNING: This is malware we are working with, do not use this in any
+malicious way! Be very careful how you handle these files!\\
+
+\noindent Extract the dump into a directory, the rest of this section will assume they are in \lstinline{Tutorial-09/wcry}.\\
+
+\noindent First let's use volatility to determine information about the image:
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw imageinfo}
+\end{center}
+\noindent Now like before we can look at the processes running in the image:
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw pslist}
+\end{center}
+\noindent Notice in this list a process "\lstinline{@WanaDecryptor@}" that probably has something to do with wannacry.\\
+
+\noindent Let's do a scan of the processes and their parents
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw psscan}
+\end{center}
+\noindent Here we can see that the wannacry components are being run by the task scheduler "\lstinline{tasksche.exe}".\\
+
+\noindent We can all see what dynamically-linked libraries both the decryptor and the task scheduler are using:
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw dlllist -p 740}\\
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw dlllist -p 1940}
+\end{center}
+\noindent Observe that both are running from the same directory, and one that does
+not look like a normal OS directory.\\
+
+\noindent We can also inspect the "handles" (used in Windows APIs for interaction) used by the code:
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw handles -p 1940}
+\end{center}
+\noindent Here we can see some Mutexes which are interesting as these are often used
+to ensure that infection does not occur multiple times.\\
+
+\noindent If we search online for these we will quickly find results that indicate that 
+\begin{center}
+    \lstinline{MsWinZonesCacheCounterMutexA}
+\end{center}
+\noindent is used by wannacry.\\
+
+\noindent Now let's extract the network connections that were open during the time
+wannacry was running:
+\begin{center}
+    \lstinline{bulk_extractor -E net -o pcap wcry/wcry.raw}
+\end{center}
+\noindent This will create several files in the "\lstinline{pcap}" directory for us to use.\\
+
+\noindent Now we can find the IP addresses that the system connected to with
+\begin{center}
+    \lstinline{tshark -T fields -e ip.src -r pcap/packets.pcap | sort -u}
+\end{center}
+\noindent This can be useful in later analysis and other parts of program hacking...\\
+
+\noindent Now let's find the files in memory that we care about (running from the
+malware's directory):
+\begin{lstlisting}
+python volatility/vol.py -f wcry/wcry.raw filescan
+    | grep ivecuqmanpnirkt615
+\end{lstlisting}
+\noindent Let's make a diectory for our file and memory dumps:
+\begin{center}
+    \lstinline{mkdir filedump}\\
+    \lstinline{mkdir memdump}
+\end{center}
+\noindent Now we can see the les we care about we can dry and dump them with
+commands like:
+\begin{lstlisting}
+python volatility/vol.py -f wcry/wcry.raw dumpfiles -Q 0x00000000022ec718
+    -D filedump/
+\end{lstlisting}
+\noindent We can extract the files we're interested in here.
+We can also dump the memory of the processes we care about:
+\begin{center}
+    \lstinline{python volatility/vol.py -f wcry/wcry.raw memdump -p1940,740 -D memdump}
+\end{center}
+\noindent Now we have the files and the memory when the malware was running.
+We can use "strings" to look for interesting strings, and of course explore
+further to find more about how the program works and to reverse engineer
+the code.\\
+
+\noindent BONUS: Look for interesting strings in the files, can you find the bitcoin
+wallet, the IP addresses from the connections, the script sent to the system,
+etc?
+% \begin{small}
+% \medskip
+% \bibliographystyle{IEEEtran}
+% \bibliography{bib}
+% \nocite{*}
+% \renewcommand\mkbibnamefamily[1]{\textbf{#1}}
+% \end{small}
+\end{document}

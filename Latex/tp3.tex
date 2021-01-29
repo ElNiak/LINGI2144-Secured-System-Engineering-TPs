@@ -1,0 +1,515 @@
+\documentclass{article}
+\usepackage[top=3.1cm, bottom=3.1cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix} 
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normal]{caption}
+\usepackage{mathtools, bm}
+\usepackage{amssymb, bm}
+%\usepackage{wrapfig}
+\usepackage{floatflt}
+\usepackage{enumitem}
+\usepackage{MnSymbol,wasysym}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{hyperref}
+\usepackage{qtree}
+%\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{pgffor}
+\usepackage{qtree}
+%\usepackage{mhchem}
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage{inconsolata}
+\usepackage{minted}
+%\usepackage{syntax} %Fait planter latex pour une raison quelconque
+
+\usepackage{color}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{mediumslateblue}{rgb}{0.48, 0.41, 0.93}
+\definecolor{electricviolet}{rgb}{0.56, 0.0, 1.0}
+
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\bmatn}[9]{\begin{bmatrix} #1 & #2 & #3\\ #4 & #5 & #6 \\ #7 & #8 & #9\end{bmatrix}}
+
+\renewcommand{\labelitemii}{$\bullet$}
+\renewcommand{\labelitemiii}{$\circ$}
+%\renewcommand{\labelitemiv}{$\bullet$}
+
+
+\newcommand{\codecourse}{LINGI2144}
+\newcommand{\titlecourse}{Secured System Engineering}
+\newcommand{\othor}{\\
+\textsc{Crochet} Christophe\\
+\textsc{Duchene} Fabien\\
+\textsc{Given-Wilson} Thomas\\
+\textsc{Strebelle} Sebastien}
+\newcommand{\professor}{\textsc{Legay} Axel}
+\newcommand{\ayear}{2020 - 2021}
+\newcommand{\year}{2020}
+
+\newenvironment{Figure} %for multicols
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{pblue},
+  keywordstyle=[2]{\color{mediumslateblue}},
+  keywordstyle=[3]{\color{electricviolet}},
+  identifierstyle=\color{black},
+  commentstyle=\itshape\color{pgreen},
+  stringstyle=\color{pred},
+  language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  aboveskip=0.3cm,belowskip=0.3cm,
+  mathescape=true,
+  moredelim=[il][\textcolor{pgrey}]{\$\$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+  morekeywords={then,end,type,String},
+  morekeywords=[2]{invariant,variant,var},
+  extendedchars=true,
+  literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+\pagenumbering{roman}
+\title{\codecourse : \titlecourse}
+\author{\othor}
+\date{September \year}
+\fancyhead[R]{\codecourse}
+
+\renewcommand{\footrulewidth}{pt}
+\fancyfoot[L]{\codecourse}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{\year}
+
+\newcommand{\colR}[1]{\color{red}{#1}}
+\newcommand{\colRB}[1]{\color{red}{[#1]}}
+\newcommand{\sep}{\ \wedge\ }
+
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\ok}{ok}
+\DeclareMathOperator{\abs}{abs}
+
+\pgfplotsset{compat=1.14}
+
+\begin{document}
+        \hfill\includegraphics[scale=0.5]{image/logoepl.png}
+        
+        \vspace*{\fill}
+            
+        \begin{center}
+        
+            \rule{1\textwidth}{1pt}\\
+	            \vspace{0.5\baselineskip}
+		            \begin{LARGE}
+	                	\textbf{\codecourse : \titlecourse}\\
+	                	Tutorial 3: Debugging with \lstinline{GDB}
+		            \end{LARGE}
+		        \vspace{0.5\baselineskip}       
+	        \rule{1\textwidth}{1pt}\\
+	        
+	        \vspace{0.5\baselineskip}
+	        
+	        \includegraphics[scale=1.5]{image/MCP.jpg}\\
+
+	        \vspace{0.5\baselineskip}
+	            Academic year : \ayear\\
+                
+		\end{center}
+		
+            \vspace*{\fill}
+            
+        \begin{tabular}{l@{\hspace{0.0cm}}r}
+        
+                \begin{minipage}{7cm}\noindent\textbf{Teacher :} \professor\\
+                \noindent\textbf{Course :} \codecourse\\
+                \noindent\textbf{Collaborators :} \othor 
+                \end{minipage}
+                &
+                
+        \end{tabular} 
+
+\newpage
+
+%\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+%\begin{itemize} //Bullet points
+%    \item [$\bullet$]
+%    \item [$\bullet$]
+%\end{itemize}
+
+%\begin{multicols}{2} //Multicolonne
+%
+%\vfill\null
+%\columnbreak
+%
+%\end{multicols}
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale = 0.7]{image/10.PNG}
+%    \caption{Titre}
+%    \label{fig:titre}
+%\end{figure}
+
+
+\section{Prerequisite}
+\noindent Working directory: \lstinline{~/SecurityClass/Tutorial-03}\\
+
+
+\noindent Connection:
+\begin{table}[h!]
+\centering
+\label{tab:my-table}
+\begin{tabular}{c|c}
+\textbf{username} & \textbf{password} \\ \hline
+user          & none         
+\end{tabular}
+\end{table}
+
+\section{Exercise}
+\subsection{Basic \lstinline{gdb} with source code}
+Let's look at \lstinline{basic.c} taken from the lectures. We can compile with the debugging  flag set, we can run the program as usual to observe the output and we can open the executable in \lstinline{gdb} (in quiet mode "\lstinline{-q}" to reduce output) with
+\begin{center}
+    \lstinline{gcc -g -o basic basic.c}\\
+    \lstinline{./basic}\\
+    \lstinline{gdb -q basic}
+\end{center}
+\noindent Now we can execute the "main" function in gdb with
+\begin{center}
+    \lstinline{run main}
+\end{center}
+\noindent Observe that the behaviour is the same as when executed outside \lstinline{gdb}.
+Now let's play a little. First we can set a \textbf{break point} at the function
+"\lstinline{func}" we call from main:
+\begin{center}
+    \lstinline{b func //b for break}
+\end{center}
+\noindent and if we execute main now the debugger will break execution here \lstinline{run main}.\\
+
+\noindent Now we're paused in the execution of the "\lstinline{func}" function. Observe that
+\lstinline{gdb} shows us the line of code we would execute next. We can continue the
+execution one step with
+\begin{center}
+    \lstinline{s}
+\end{center}
+\noindent The next line of the code is the return, but before we continue we can \textbf{inspect}
+the local values will print the values of "a" and "b", respectively..
+\begin{center}
+    \lstinline{p a //p for print}\\
+    \lstinline{p b}
+\end{center}
+\noindent Now we can continue through the program by \textbf{stepping} repeatedly with
+"\lstinline{s}", however you may find this takes a long time to finish (pressing enter
+after you have previously executed many \lstinline{gdb} commands well repeat that
+command, this includes step). Observe that this reveals a lot of information
+about how the \lstinline{printf} call is handled (but is not very fun).\\
+
+\noindent You can also \textbf{continue} the execution after a break with "\lstinline{c}".
+Let's run the program again and break at the same point \lstinline{run main} again we stop at the beginning of the "\lstinline{func}" function, and we can check the values of "a" and "b".
+\begin{center}
+    \lstinline{p a}\\
+    \lstinline{p b}
+\end{center}
+\noindent Observe that here \lstinline{gdb} knows that "b" exists, but no value has been set yet
+(the value shown is whatever was in the register/stack space reserved for
+"b"). We can see that this is for "b" by:
+\begin{center}
+    \lstinline{p x}
+\end{center}
+\noindent to observe that no symbol "x" is defined.
+we can also use \lstinline{gdb} to skip past instructions. If we now enter
+\begin{center}
+    \lstinline{jump +1}
+\end{center}
+\noindent we will see that the program continues without ever setting the value of "b". Let's start our program again \lstinline{run main} and now when we reach the break point let's set another \textbf{(temporary) break point} and then jump to it with:
+\begin{center}
+    \lstinline{tbreak +1}\\
+    \lstinline{jump +1}
+\end{center}
+
+\noindent now if we check the values of our variables
+\begin{center}
+    \lstinline{p a}\\
+    \lstinline{p b}
+\end{center}
+\noindent we can see we've skipped the assignment of "b". Let's fix this by giving "b"
+a more reasonable value
+\begin{center}
+    \lstinline{set var b=100}\\
+    \lstinline{p b}
+\end{center}
+\noindent Now let's allow the program to continue as normal with \lstinline{c}.\\
+
+\noindent As we can see, we can control the execution, control 
+flow, and values of our
+programs while running them. Finally we can exit \lstinline{gdb} with \lstinline{quit}.
+
+
+\subsection{\lstinline{gdb} disassembly}
+\noindent Now let's look at the disassembly and assembly instructions for our \lstinline{basic.c}
+program. Again we compile with debugging information.\\
+
+\noindent\textbf{Let's run the program once to observe it is the same, and also to initialise some address} and behaviour in \lstinline{gdb} \lstinline{r main}. Now we can disassemble the 
+\begin{center}
+    \lstinline{disass main}
+\end{center}
+\noindent Like before we can set a break point, except now at the address instead of using the source code information. Here let's set a break point at the call to
+"\lstinline{func}", something like:
+\begin{center}
+    \lstinline{b *0x004011d9}
+\end{center}
+\noindent NOTE: your address may be different, so don't assume you can copy and paste from the tutorial here!\\
+
+\noindent Now we run the code as before and we break at the function call. Here we can inspect the "\lstinline{eip}" register
+which indicates which instruction to load next
+\begin{center}
+    \lstinline{i r eip}
+\end{center}
+observe that this corresponds to the instruction to call the function "\lstinline{func}".
+Now if we step forward one instruction with
+\begin{center}
+    \lstinline{si}
+\end{center}
+\noindent and inspect the \lstinline{eip} register again
+\begin{center}
+    \lstinline{i r eip}
+\end{center}
+\noindent we can see that the next instruction to execute is now the address of the call.
+Let's disassemble the "\lstinline{func}" function and check that the address matches:
+\begin{center}
+    \lstinline{disass func}
+\end{center}
+\noindent Now we can step through this function until before the "leave" instruction.\\
+
+\noindent NOTE: you may need to use \lstinline{i r eip} to know where you are since the debugger will mostly show the C code information (or you can set a break point and continue to it).\\
+
+\noindent Here we can inspect the return value (stored in \lstinline{eax})
+\begin{center}
+    \lstinline{i r eax}
+\end{center}
+\noindent and observe that it is "15" as we expect. We can also change this value with
+\begin{center}
+    \lstinline[mathescape=false]{set $eax = 200}
+\end{center}
+\noindent and check this has worked with
+\begin{center}
+    \lstinline{i r eax}
+\end{center}
+
+\noindent Now we can let the program finish and see that we've changed the result and quit.
+\begin{center}
+    \lstinline{c}\\
+    \lstinline{quit}
+\end{center}
+\subsection{\lstinline{gdb} without source code}
+We can also \lstinline{gdb} to debug programs we do not have the source code for.
+However, for our first exercise let's use the same code as before, \textbf{but compile
+without the debugging information}.
+\begin{center}
+    \lstinline{gcc -o basic basic.c}\\
+    \lstinline{gdb -q basic}
+\end{center}
+\noindent If we run the code we see the expected result\lstinline{r}. We know what is in this program, but in general we could start our disassembly with
+\begin{center}
+    \lstinline{disass main}
+\end{center}
+\noindent which shows the same code as before. Also by inspecting this code we can see which other functions are called and disassemble them (or at least "\lstinline{func}").\\
+
+\noindent Let's set a break point at the beginning of the main code:
+\begin{center}
+    \lstinline{b *0x004011d9}
+\end{center}
+\noindent \noindent NOTE: your address may be different\\
+
+\noindent Now if we start the
+execution with \lstinline{r} we will be stopped at the beginning. Observe that if we now use \lstinline{s} to step, we will go to the next "step" the has line number/debugging information... in the print calls. We can let the program finish with "\lstinline{c}", this is to illustrate that we cannot step when we only have assembly code. Now use \lstinline{gdb} to change the value printed by this program.\\
+
+\noindent\textbf{IMPORTANT NOTE} 
+For Sections 3.4 and 3.5 of the tutorial the binaries have been provided. For
+each one the command to build it is also included (at the end of the section),
+but this is only here in case \lstinline{gdb} fails to work on the provided binary. (This
+could happen because of differences in architecture or OS, but should NOT
+be a problem if you use the image provided.)\\
+
+\noindent If you do not have any problems with \lstinline{gdb}, do not look at the source code
+unless you really need help. The goal of the rest of the tutorial is to work
+from the binary and exploit \lstinline{gdb}.
+\subsection{Find a secret code}
+\noindent Let's look at the program "\lstinline{code}" and see what we can find. By running it
+we have some idea of it's behaviour:
+\begin{center}
+    \lstinline{./code}
+\end{center}
+\noindent However, it might take a long time to guess the code (even it it's only a single byte). Also without the source code this is going to be annoying to
+work with. Let's start by loading the program in \lstinline{gdb}.
+\begin{center}
+    \lstinline{gdb -q code}
+\end{center}
+\noindent and running the program to ensure it works.
+\begin{center}
+    \lstinline{r}
+\end{center}
+\noindent As we can see, the behaviour is the same.\\
+
+\noindent Let's disassemble the main function and see what we can see.
+\begin{center}
+    \lstinline{disass main}
+\end{center}
+\noindent You should be able to see the structure of the program, and from this how to find the passcode.
+\begin{itemize}
+    \item HINT: can you find somewhere where some values are compared?
+\end{itemize}
+\noindent From this you should be able to find the code, although some conversion
+between hexidecimal and decimal may be needed to give the right input to
+the program.\\
+
+\noindent A slightly harder example is available as "\lstinline{recode}", can you find the right passcode now?
+\begin{itemize}
+    \item HINT: the code has been compiled with debugging information included.
+    \item CHEATING: To build the "\lstinline{code}" binary run
+\end{itemize}
+\begin{center}
+    \lstinline{gcc -g -o code ../Cheating/3.4/code.c}
+\end{center}
+\noindent To build the "\lstinline{recode}" binary run
+\begin{center}
+    \lstinline{gcc -g -o recode ../Cheating/3.4/recode.c}
+\end{center}
+
+\subsection{Simple Backdoor}
+
+Let's look at the program "\lstinline{backdoor}" and see what we can find. By running
+it we have some idea of it's behaviour:
+\begin{center}
+    \lstinline{./backdoor}
+\end{center}
+\noindent You suspect this code has some behaviour that only triggers sometimes, but
+you don't know what causes it.
+\textbf{Use \lstinline{gdb} to exhibit the backdoor behaviour.}
+\begin{itemize}
+    \item HINT: Recall you can use "\lstinline{jump}" to go to specific locations in the assembly.
+    \item BONUS: Work out what the trigger for the backdoor behaviour is.
+    \item HINT: Trace back or inspect the values used in the comparison operations.
+    \item CHEATING: To build the "backdoor" binary run
+\end{itemize}
+\begin{center}
+    \lstinline{gcc -o backdoor ../Cheating/3.5/backdoor.c}
+\end{center}
+
+\subsection{Self Modifying Code}
+In \lstinline{complex.c} you will find two examples of self modifying code. This can be compiled and executed with to see the output:
+\begin{center}
+    \lstinline{gcc -o complex complex.c}\\
+    \lstinline{./complex}
+\end{center}
+
+\noindent The main idea behind self modifying code is to change the behaviour of
+the program at runtime, which is done here in two different ways. Due to the
+way Linux handles memory safety and code execution and access, the source
+code is a little complex. The main points to look at are as follows.
+\begin{enumerate}
+    \item By line 42 we have allocated a block of memory that we can execute. Now lines 42 to 47 load values into this memory that can be interpreted as instructions. These are then executed on line 49 and the result printed on line 50. Observe that the instructions here load the value "\lstinline{0xD}" into \lstinline{EAX} (the return value register) and then return immediately.
+    \item A similar modification of the memory is done from lines 53 to 61. The return value is different, however you can see that the call to the executable memory is the same (only out writing to the memory has changed the behaviour).
+    \item Lines 80 to 93 demonstrate a different kind of executable memory modification. Initially we execute the function "\lstinline{fun}" with argument "4" and print the result. After this we use "\lstinline{ptr}" and "\lstinline{offset}" to over-write the function behaviour, then we call the same function with the same argument and see different output.
+\end{enumerate}
+\noindent Trace through these examples in \lstinline{gdb} and observe the modification to the
+memory to see how the code operates (not just from the print statements
+and explanation here). To help it might be good to build the executable with
+debugging information:
+\begin{center}
+    \lstinline{gcc -g -o debug complex.c}
+\end{center}
+\noindent We can use commands like to \textbf{see the memory values} that are being addressed by \lstinline{testfun}:
+\begin{center}
+    \lstinline{x/24xw testfun}
+\end{center}
+\textbf{Modify \lstinline{complex.c} to write different behaviour into one of
+the executed code blocks to change the program behaviour. (For example,
+can you create an infinite loop?)}
+\subsection{Breaking "Safe" Code from Tutorial-01}
+Here we have some of the "fixed" versions of the programs from Tutorial 01.
+Recall that these used to have various vulnerabilities that could be exploited.
+These can all be built (without debugging information) with:
+\begin{lstlisting}[mathescape=false]
+for x in `ls *fixed* | awk -F'.' '{print $1}'`
+    do echo Building $x;gcc -o $x $x.c;done
+\end{lstlisting}
+\noindent Use \lstinline{gdb} to cause them to crash or behave badly with "safe" input.\\
+
+\noindent NOTE: to pass command line arguments into \lstinline{gdb} use:
+\begin{center}
+    \lstinline{gdb -q --args bettercat-fixed bettercat-fixed.c}
+\end{center}
+\begin{itemize}
+    \item HINT: If this is difficult with pure assembly, try compiling with debugging information first.
+    \item HINT: Recall that you can change the values of registers or change the control flow
+\end{itemize}
+
+\subsection{Breaking "Safe" Code from Tutorial-02}
+Here are two fixed programs form Tutorial 2 that should have safe spacial
+memory bounds. These can be built (again without debugging information
+with):
+\begin{lstlisting}[mathescape=false]
+for x in `ls *fixed* | awk -F'.' '{print $1}'`
+    do echo Building $x;gcc -o $x $x.c;done
+\end{lstlisting}
+\noindent \textbf{Use \lstinline{gdb} to inspect their program flow and then read outside of memory
+safety.} (You should be able to produce the same behaviour as the original
+unsafe versions from Tutorial 2.)
+\subsection{Free Play with \lstinline{gdb}}
+If you get this far then play around with \lstinline{gdb} and see what other things you
+can do. Some suggestions include:
+\begin{enumerate}
+    \item Watch a variable or condition to catch a specific point in a program (e.g. inside a loop).
+    \item Attach to a running process.
+    \item Write a program with a hidden value (like 3.4) and see if a friend can find the value using \lstinline{gdb} on the compiled program.
+\end{enumerate}
+
+% \begin{small}
+% \medskip
+% \bibliographystyle{IEEEtran}
+% \bibliography{bib}
+% \nocite{*}
+% \renewcommand\mkbibnamefamily[1]{\textbf{#1}}
+% \end{small}
+\end{document}

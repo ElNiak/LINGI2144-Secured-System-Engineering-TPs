@@ -1,0 +1,451 @@
+\documentclass{article}
+\usepackage[top=3.1cm, bottom=3.1cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[toc,page]{appendix} 
+\usepackage{eurosym}
+\usepackage{gensymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[normal]{caption}
+\usepackage{mathtools, bm}
+\usepackage{amssymb, bm}
+%\usepackage{wrapfig}
+\usepackage{floatflt}
+\usepackage{enumitem}
+\usepackage{MnSymbol,wasysym}
+\usepackage[export]{adjustbox}
+\usepackage{float}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{titlesec}
+\usepackage{soul}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{hyperref}
+\usepackage{qtree}
+%\usepackage{chemfig}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{pgffor}
+\usepackage{qtree}
+%\usepackage{mhchem}
+%\usepackage[demo]{graphicx}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage[squaren, Gray, cdot]{SIunits}
+\usepackage{inconsolata}
+\usepackage{minted}
+%\usepackage{syntax} %Fait planter latex pour une raison quelconque
+
+\usepackage{color}
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+\definecolor{mediumslateblue}{rgb}{0.48, 0.41, 0.93}
+\definecolor{electricviolet}{rgb}{0.56, 0.0, 1.0}
+
+\newcommand{\bmat}[4]{\begin{bmatrix} #1 & #2 \\ #3 & #4\end{bmatrix}}
+\newcommand{\bmatn}[9]{\begin{bmatrix} #1 & #2 & #3\\ #4 & #5 & #6 \\ #7 & #8 & #9\end{bmatrix}}
+
+\renewcommand{\labelitemii}{$\bullet$}
+\renewcommand{\labelitemiii}{$\circ$}
+%\renewcommand{\labelitemiv}{$\bullet$}
+
+
+\newcommand{\codecourse}{LINGI2144}
+\newcommand{\titlecourse}{Secured System Engineering}
+\newcommand{\othor}{\\
+\textsc{Crochet} Christophe\\
+\textsc{Duchene} Fabien\\
+\textsc{Given-Wilson} Thomas\\
+\textsc{Strebelle} Sebastien}
+\newcommand{\professor}{\textsc{Legay} Axel}
+\newcommand{\ayear}{2020 - 2021}
+\newcommand{\year}{2020}
+
+\newenvironment{Figure} %for multicols
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\usepackage{listings}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{pblue},
+  keywordstyle=[2]{\color{mediumslateblue}},
+  keywordstyle=[3]{\color{electricviolet}},
+  identifierstyle=\color{black},
+  commentstyle=\itshape\color{pgreen},
+  stringstyle=\color{pred},
+  language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  aboveskip=0.3cm,belowskip=0.3cm,
+  mathescape=true,
+  moredelim=[il][\textcolor{pgrey}]{\$\$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%},
+  morekeywords={then,end,type,String},
+  morekeywords=[2]{invariant,variant,var},
+  extendedchars=true,
+  literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\EUR}}1 {£}{{\pounds}}1
+}
+\pagenumbering{roman}
+\title{\codecourse : \titlecourse}
+\author{\othor}
+\date{September \year}
+\fancyhead[R]{\codecourse}
+
+\renewcommand{\footrulewidth}{pt}
+\fancyfoot[L]{\codecourse}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{\year}
+
+\newcommand{\colR}[1]{\color{red}{#1}}
+\newcommand{\colRB}[1]{\color{red}{[#1]}}
+\newcommand{\sep}{\ \wedge\ }
+
+\DeclareMathOperator{\fib}{fib}
+\DeclareMathOperator{\ok}{ok}
+\DeclareMathOperator{\abs}{abs}
+
+\pgfplotsset{compat=1.14}
+
+\begin{document}
+        \hfill\includegraphics[scale=0.5]{image/logoepl.png}
+        
+        \vspace*{\fill}
+            
+        \begin{center}
+        
+            \rule{1\textwidth}{1pt}\\
+	            \vspace{0.5\baselineskip}
+		            \begin{LARGE}
+	                	\textbf{\codecourse : \titlecourse}\\
+	                	Tutorial 4: Buffer Overflow
+		            \end{LARGE}
+		        \vspace{0.5\baselineskip}       
+	        \rule{1\textwidth}{1pt}\\
+	        
+	        \vspace{0.5\baselineskip}
+	        
+	        \includegraphics[scale=1.5]{image/MCP.jpg}\\
+
+	        \vspace{0.5\baselineskip}
+	            Academic year : \ayear\\
+                
+		\end{center}
+		
+            \vspace*{\fill}
+            
+        \begin{tabular}{l@{\hspace{0.0cm}}r}
+        
+                \begin{minipage}{7cm}\noindent\textbf{Teacher :} \professor\\
+                \noindent\textbf{Course :} \codecourse\\
+                \noindent\textbf{Collaborators :} \othor 
+                \end{minipage}
+                &
+                
+        \end{tabular} 
+
+\newpage
+
+%\tableofcontents
+
+\newpage
+\pagenumbering{arabic}
+%\begin{itemize} //Bullet points
+%    \item [$\bullet$]
+%    \item [$\bullet$]
+%\end{itemize}
+
+%\begin{multicols}{2} //Multicolonne
+%
+%\vfill\null
+%\columnbreak
+%
+%\end{multicols}
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale = 0.7]{image/10.PNG}
+%    \caption{Titre}
+%    \label{fig:titre}
+%\end{figure}
+
+
+\section{Prerequisite}
+\noindent Working directory: \lstinline{~/SecurityClass/Tutorial-04}\\
+
+
+\noindent Connection:
+\begin{table}[h!]
+\centering
+\label{tab:my-table}
+\begin{tabular}{c|c}
+\textbf{username} & \textbf{password} \\ \hline
+admin          & nimda         
+\end{tabular}
+\end{table}
+
+\subsection{Environment Configuration}
+On most Linux systems and with most compilers there are protections built
+in to prevent various exploits. For today's tutorial we may have to turn some
+of these off.\\
+
+\noindent One is the randomisation of memory segments by the Linux kernel. We
+can see the current value with
+\begin{center}
+    \lstinline{sudo cat /proc/sys/kernel/randomize_va_space}
+\end{center}
+\noindent This is "2" by default on Kali Linux (and most Linux systems). To turn this off for the rest of the sessions by setting the value to "0" we can run
+\begin{center}
+    \lstinline{echo 0 | sudo tee /proc/sys/kernel/randomize_va_space}\\
+    \lstinline{sudo cat /proc/sys/kernel/randomize_va_space}
+\end{center}
+\noindent The compiler can also insert various protections into code that is compiled.
+For the stack, \lstinline{gcc} includes some stack protection by default on many
+versions. We can force this to be turned off with the argument
+\begin{center}
+    \lstinline{-fno-stack-protector}
+\end{center}
+\noindent At times we may also wish to force gcc to compile code with executable
+instructions on the stack, we can enable this with
+\begin{center}
+    \lstinline{-z execstack}
+\end{center}
+
+\section{Exercise}
+\subsection{Buffer Over
+ow on the Stack (from lecture)}
+Building the \lstinline{password.c} file in a bad way:
+\begin{center}
+    \lstinline{gcc -fno-stack-protector -o password password.c}
+\end{center}
+\noindent Note that we have disabled stack protection and are assuming no address
+space randomisation here.\\
+
+\noindent Now let's see what we can observe from the behaviour by trying passwords
+of different length for the password program.\\
+
+\noindent You should be able to provoke four different behaviours from this code:
+\begin{enumerate}
+    \item \lstinline{"access granted"} with the password \lstinline{"good"}
+    \item \lstinline{"bad password!"} with the wrong password
+    \item both \lstinline{"bad password!"} and \lstinline{"access granted"}
+    \item \lstinline{"bad password!"} followed by a segmentation fault.
+\end{enumerate}
+
+\subsection{Buffer Overflow Minor Variations}
+Here we have the same code as before in \lstinline{password.c}, but we can check and see the effect of the environment as configured in 4.1.\\
+
+\noindent First let's build the code with stack protection enabled:
+\begin{center}
+    \lstinline{gcc -fno-stack-protector -o password password.c}
+\end{center}
+\noindent Now if we run the same experiments as before we expect the code to
+report that "stack smashing" is detected and this should prevent both access
+granted after a bad password, and segmentation faults.\\
+
+
+\noindent \textbf{Inspect the two different versions of the code with \lstinline{gdb} and see if you can find where and how the stack protection is implemented. Do
+you know which kind of stack protection this implementation is?}\\
+
+
+\noindent Next the code in "\lstinline{reordered.c}" makes minor changes to the order of the
+declared variables in the "\lstinline{check_authentication}" function. This code may or
+may not also have the same vulnerability, test on your system and with your
+compiler(s) to see what happens. Note that you may experience different
+results with different compilers, try:
+\begin{center}
+    \lstinline{gcc}\\
+    \lstinline{clang}\\
+    \lstinline{g++}
+\end{center}
+\noindent Typically you can find what compilers (and compiler modules) are available
+with
+\begin{center}
+    \lstinline{dpkg --list | grep compiler}
+\end{center}
+\noindent The VM only has the three above for now, but you can look on other systems.
+
+\subsection{Infinite Loop by Overflow}
+The code in "\lstinline{simple-loop.c}" has a function that copies from an argument into a buffer. However, the bounds checking for the copy has an off-by-one error allowing an extra byte to be copied. This can cause an infinite loop for some compilers. \\
+
+\noindent Compile the code with to enable debugging information and then use \lstinline{gdb} to explore the values inside
+foo.
+\begin{center}
+    \lstinline{gcc -g -o simple-loop simple-loop.c}
+\end{center}
+\noindent WARNING: Results here can be compiler dependent\\
+
+\noindent Run with and then experiment with the argument to create the infinite loop.
+\begin{center}
+    \lstinline{./simple-loop test}
+\end{center}
+\noindent When this has succeeded, use \lstinline{gdb} to explore how this happens.
+\begin{itemize}
+    \item HELP: The following command should create an infinite loop:
+    \begin{center}
+        \lstinline{./simple-loop 0123456789abcdef}
+    \end{center}
+    if this does not, then you may can check with \lstinline{gdb} to find out why (or why it is impossible).
+\end{itemize}
+\noindent CHEAT: (Read me if you cannot create an infinite loop!) The reason
+for the infinite loop is due to the null termination character from the input
+string being able to over-write the loop counter. This may not work, e.g. if
+the compiler re-orders the arguments. If this did not work for you, have a
+look and see what the compiler did to prevent it happening.\\
+
+\noindent \textbf{Does clang also allow an infinite loop? Can you fix the code
+so this doesn't happen?}
+\subsection{Infinite Loop by Overflow (from lecture)}
+The code in "\lstinline{loop.c}" does nothing interesting, except that the argument
+sent to the "foo" function can be changed by you inside main. You should be
+able to provoke an infinite loop in the code by using an overflow of the \lstinline{strcpy} function inside "foo" to overwrite the \lstinline{EBP} and \lstinline{EIP} values on the stack.\\
+
+\noindent Compile the code with to enable debugging information and then use gdb to explore the values inside foo.
+\begin{center}
+    \lstinline{gcc -g -o loop loop.c}
+\end{center}
+\noindent HINT: you can use
+\begin{center}
+    \lstinline{x/24xw newbuffer}
+\end{center}
+\noindent when inside the foo function to see values around the "\lstinline{newbuffer}" as allocated on the stack. By comparing these with the known return point in the main
+function and the value of \lstinline{EBP} you should be able to find what you're looking for.\\
+
+\noindent HINT: You can change the value of \lstinline{TARGET} and write other information
+into (or around) "buffer" in the "\lstinline{main}" function
+\subsection{EBP abuse}
+The code in "\lstinline{exploitme.c}" has an off-by-one error and very similar structure
+to the code in 4.4. Except now the value of the loop counter is different and
+so we cannot create the same infinite loop with a simple argument. However
+depending on the compiler we may be able to do something else.\\
+
+\noindent To produce the exploitable code here compile with:
+\begin{center}
+    \lstinline{clang -g -o exploitme exploitme.c}
+\end{center}
+
+\noindent Now we can run the code and explore in \lstinline{gdb} to find what can be changed.
+You should be able to see a change to the stack where the value of \lstinline{EBP} is stored.\\
+
+\noindent BONUS: Can you find a way to exploit this?\\
+
+\noindent The code in "\lstinline{vulnerable.c}" allows you to overflow the buffer much more generously. Here you should be able to manipulate the stack (in particular \lstinline{EBP}) to alter the state of the program after the return in a more complex way. Observe that the program prints the length of the argument. You should
+be able to overflow and overwrite the \lstinline{EBP} so that it points somewhere else.
+Then in your argument that overflows, create a fake stack frame so that the
+rest of the main function prints an incorrect value (hiding that your argument
+was long enough to overflow by over-writing the value stored from "\lstinline{strlen}").
+
+
+\subsection{Spawning a Shell}
+NOTE: This is not a buffer overflow. This section introduces you to how to
+spawn a shell from a "string" that you execute.\\
+
+\noindent One thing we looked at in Tutorial 1 was spawning a shell in a program
+that was not designed to do this. As we saw, if the right program (with the
+right permissions) is used, then we can gain root shell access.\\
+
+\noindent Now let's look at how we might create a shell in a program by exploiting
+our knowledge of the program itself.
+In "\lstinline{testshell.s}" you will find the assembly instructions to spawn a shell
+under Linux.\\
+
+
+\noindent ASIDE: If you want or need to build your own machine instructions for
+creating a shall follow these commends, but it has been made already (for
+the architecture and OS detailed at the beginning of the Tutorial):
+\begin{center}
+    \lstinline{as testshell.s -o testshell.o}\\
+    \lstinline{ld testshell.o -o testshell}\\
+    \lstinline{objdump -d testshell}
+\end{center}
+\noindent which will show you the machine instructions. These can then be turned into the string you will find in "\lstinline{example.c}".\\
+
+\noindent In "\lstinline{example.c}" you will find a simple C program that already has the
+code for a shell (or shellcode) defined as a string. The rest of the program
+merely points to this string and executes the "string". We can compile and
+run the program with
+\begin{center}
+    \lstinline{gcc -g -fno-stack-protector -z execstack -o example example.c}\\
+    \lstinline{./example}
+\end{center}
+Note that we compile to allow execution of the stack since the program we wish to execute is on the stack as the shellcode.
+When the program runs we are dropped into a \lstinline{/bin/sh} shell that we can
+operate in. We can exit this shell now we have shown that it works.\\
+
+\noindent Now if we redo the permissions from Tutorial 1:
+\begin{center}
+    \lstinline{sudo chown root:root example}\\
+    \lstinline{sudo chmod 4755 example}
+\end{center}
+\noindent and run the command without root
+\begin{center}
+    \lstinline{./example}
+\end{center}
+\noindent we will be in a shell that has root privileges. This demonstrates how to spawn a (root) shell from executing a string
+stored on the stack
+\subsection{Overflow and Pwn}
+\noindent Now let's combine our shellcode with a buffer overflow and gain a shell. We
+can see in the code for "\lstinline{vulnerable.c}" and we can observe that there is a copy
+of the first argument to the code on the stack. If we compile the code with
+\begin{center}
+    \lstinline{gcc -g -fno-stack-protector -z execstack -o vulnerable vulnerable.c}\\
+    \lstinline{./vulnerable}
+\end{center}
+\noindent that we could try and inject the shellcode into via a command line argument.\\
+
+\noindent Open "vulnerable" with \lstinline{gdb} and find where the copy takes place and
+what you would need to add to inject your shell code.\\
+
+\noindent The goal here is to (at least in \lstinline{gdb}) be able to create a new shell by using a command line argument to vulnerable.\\
+
+\noindent HINT: You can create a "NOP sled" which is a sequence of non-instructions
+that you can land it before reaching the beginning of your shellcode. The
+instruction code for a non-operation is \lstinline{0x90}. For example:
+"\lstinline{\x90\x90\x90\x90\x90\x90\x90\x90\x90}" before the shellcode creates a
+collection of instructions that the CPU will execute in order so you can jump
+to any of them and safely continue.\\
+
+\noindent BONUS: Can you do something similar with "\lstinline{tinybuf.c}" where the buffer
+is too small to contain the shellcode?
+
+\subsection{Play and Pwn}
+The goal for the rest of the tutorial is to take your experience with creating
+errors and combine them with the code to create a shell. Use the shellcode
+and exploits from 4.7 and 4.8 with the tutorial programs to inject an exploit
+using other buffer overflows.\\
+
+\noindent Note that you may have to exploit a particular compiler and play with
+\lstinline{gdb} a bit to find exactly how and where to insert your shellcode.\\
+
+\noindent HINT: You may have to (re)compile the earlier programs with stack execution
+allowed to be able to run your injected shellcode.
+% \begin{small}
+% \medskip
+% \bibliographystyle{IEEEtran}
+% \bibliography{bib}
+% \nocite{*}
+% \renewcommand\mkbibnamefamily[1]{\textbf{#1}}
+% \end{small}
+\end{document}
